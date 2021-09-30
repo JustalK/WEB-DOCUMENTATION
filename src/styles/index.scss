@@ -16,6 +16,11 @@ span {
   color: red;
 }
 
+.content, .hamburger, .roadmap {
+  float: left;
+  transition: 1s all;
+}
+
 .content {
   width: 100%;
   background: blue;
@@ -23,8 +28,19 @@ span {
 
 .hamburger {
   background: red;
+  height: 200px;
+  width: 0;
 }
 
 .roadmap {
   background: green;
+}
+
+.hamburger-open {
+  .content {
+    width: calc(100% - 200px);
+  }
+  .hamburger {
+    width: 200px;
+  }
 }

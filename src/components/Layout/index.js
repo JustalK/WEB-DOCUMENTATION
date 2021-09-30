@@ -3,17 +3,20 @@
  * @module components/Layout
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import Menu from '@components/Menu'
+import clsx from 'clsx'
 /**
  * @function Layout
  * Create the component Layout
  * @return {Object} Return the dom of the Layout page
  */
 const Layout = ({ children }) => {
+  const [isHambugerOpen, setIsHamburgerOpen] = useState(true)
+
   return (
-    <div>
-      <Menu />
+    <div className={clsx({ 'hamburger-open': isHambugerOpen })}>
+      <Menu setIsHamburgerOpen={setIsHamburgerOpen} />
       <div className="hamburger" />
       <div className="content">{children}</div>
       <div className="roadmap" />
