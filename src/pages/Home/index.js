@@ -5,6 +5,7 @@
 
 import React from 'react'
 import Seo from '@components/Seo'
+import Layout from '@components/Layout'
 
 /**
  * @function Home
@@ -15,7 +16,7 @@ const Home = () => {
   return (
     <>
       <Seo title="Home" description="Description of Home" />
-      Test
+      <Layout>ggg</Layout>
     </>
   )
 }
