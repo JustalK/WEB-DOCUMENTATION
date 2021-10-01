@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-
+import './styles.scss'
 /**
  * @function Menu
  * Create the component Menu
@@ -12,9 +12,9 @@ import React from 'react'
  */
 const Menu = ({ title }) => {
   return (
-    <div>
-      <span>{title}</span>
-    </div>
+    <header>
+      <div>{title}</div>
+    </header>
   )
 }
 
