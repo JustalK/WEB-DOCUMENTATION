@@ -17,30 +17,35 @@ span {
 }
 
 .content, .hamburger, .roadmap {
-  float: left;
   transition: 1s all;
 }
 
-.content {
+.fluid-container {
   width: 100%;
-  background: blue;
 }
 
-.hamburger {
-  background: red;
+.container {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  padding: 85px 85px 0;
+  box-sizing: border-box;
+}
+
+.content {
+  width: calc(100%);
+  background: blue;
   height: 200px;
-  width: 0;
 }
 
 .roadmap {
   background: green;
 }
 
-.hamburger-open {
-  .content {
-    width: calc(100% - 200px);
-  }
-  .hamburger {
-    width: 200px;
-  }
+.hamburger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background: red;
 }

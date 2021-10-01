@@ -15,11 +15,13 @@ const Layout = ({ children }) => {
   const [isHambugerOpen, setIsHamburgerOpen] = useState(true)
 
   return (
-    <div className={clsx({ 'hamburger-open': isHambugerOpen })}>
-      <Menu setIsHamburgerOpen={setIsHamburgerOpen} />
-      <div className="hamburger" />
-      <div className="content">{children}</div>
-      <div className="roadmap" />
+    <div className="fluid-container">
+      <div className="container">
+        <Menu setIsHamburgerOpen={setIsHamburgerOpen} />
+        <div className={clsx({ hamburger: true, 'hamburger-open': isHambugerOpen })} />
+        <div className="content">{children}</div>
+        <div className="roadmap" />
+      </div>
     </div>
   )
 }
