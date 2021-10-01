@@ -1,0 +1,9 @@
+.fluid-container {
+  width: 100%;
+  .container {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 85px 85px 0;
+    box-sizing: border-box;
+  }
+}
