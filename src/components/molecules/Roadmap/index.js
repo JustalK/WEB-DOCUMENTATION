@@ -3,6 +3,7 @@
  * @module components/Roadmap
  */
 import React from 'react'
+import Anchor from '@components/atoms/Anchor'
 import './style.scss'
 
 /**
@@ -10,8 +11,14 @@ import './style.scss'
  * Create the component Roadmap
  * @return {Object} Return the dom of the Roadmap menu
  */
-const Roadmap = ({ children }) => {
-  return <div className="roadmap">{children}</div>
+const Roadmap = ({ className, roadmap }) => {
+  return (
+    <div className={className}>
+      {roadmap.map((rm) => (
+        <Anchor key={rm} link={rm} text={rm} />
+      ))}
+    </div>
+  )
 }
 
 export default Roadmap

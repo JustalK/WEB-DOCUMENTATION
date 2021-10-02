@@ -5,7 +5,7 @@
 import React, { useState } from 'react'
 import Content from '@components/atoms/Content'
 import Hamburger from '@components/atoms/Hamburger'
-import Roadmap from '@components/atoms/Roadmap'
+import Roadmap from '@components/molecules/Roadmap'
 import Menu from '@components/atoms/Menu'
 import clsx from 'clsx'
 import './style.scss'
@@ -15,17 +15,17 @@ import './style.scss'
  * Create the component Roadmap
  * @return {Object} Return the dom of the Roadmap menu
  */
-const Course = ({ children }) => {
+const Course = ({ children, roadmap }) => {
   const [isHambugerOpen, setIsHambugerOpen] = useState(false)
 
   return (
     <>
-      <Menu setIsHambugerOpen={setIsHambugerOpen} />
+      <Menu isHambugerOpen={isHambugerOpen} setIsHambugerOpen={setIsHambugerOpen} />
       <div className="fluid-container">
         <div className={clsx({ container: true, 'container-wide': !isHambugerOpen })}>
           <Hamburger isHambugerOpen={isHambugerOpen} />
           <Content isHambugerOpen={isHambugerOpen}>{children}</Content>
-          <Roadmap />
+          <Roadmap className="roadmap" roadmap={roadmap} />
         </div>
       </div>
     </>

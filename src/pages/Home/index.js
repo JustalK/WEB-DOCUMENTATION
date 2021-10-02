@@ -13,10 +13,14 @@ import Course from '@components/templates/Course'
  * @return {Object} Return the dom of the Home page
  */
 const Home = () => {
+  const hamburgerMenu = 'menu1'
+  const roadmap = ['azeaze', 'azeaeae']
   return (
     <>
       <Seo title="Home" description="Description of Home" />
-      <Course>ggg</Course>
+      <Course hamburgerMenu={hamburgerMenu} roadmap={roadmap}>
+        ggg
+      </Course>
     </>
   )
 }
