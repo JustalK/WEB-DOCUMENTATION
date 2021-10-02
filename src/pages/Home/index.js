@@ -6,7 +6,6 @@
 import React from 'react'
 import Seo from '@components/Seo'
 import Course from '@components/templates/Course'
-import Menu from '@components/atoms/Menu'
 
 /**
  * @function Home
@@ -17,7 +16,6 @@ const Home = () => {
   return (
     <>
       <Seo title="Home" description="Description of Home" />
-      <Menu />
       <Course>ggg</Course>
     </>
   )

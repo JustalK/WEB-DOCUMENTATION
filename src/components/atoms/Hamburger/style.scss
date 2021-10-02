@@ -7,4 +7,9 @@
   background: red;
   padding: 90px 17px 40px 24px;
   box-sizing: border-box;
+  transform: translate(-250px);
+
+  &-open {
+    transform: translate(0);
+  }
 }

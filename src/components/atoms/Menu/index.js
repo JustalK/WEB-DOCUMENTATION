@@ -10,9 +10,10 @@ import './styles.scss'
  * Create the component Menu
  * @return {Object} Return the dom of the Menu page
  */
-const Menu = ({ title }) => {
+const Menu = ({ title, setIsHambugerOpen }) => {
   return (
     <header>
+      <button onClick={() => setIsHambugerOpen((c) => !c)}>Hamburger</button>
       <div>{title}</div>
     </header>
   )
