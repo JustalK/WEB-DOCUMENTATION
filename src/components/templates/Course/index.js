@@ -3,6 +3,10 @@
  * @module components/Roadmap
  */
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import useSWR from 'swr'
+import fetcher from '@services/Api'
+import GET_PAGE from '@services/pages'
 import Content from '@components/atoms/Content'
 import Hamburger from '@components/molecules/Hamburger'
 import Roadmap from '@components/molecules/Roadmap'
@@ -16,8 +20,11 @@ import './style.scss'
  * Create the component Roadmap
  * @return {Object} Return the dom of the Roadmap menu
  */
-const Course = ({ children, roadmap }) => {
-  const [isHambugerOpen, setIsHambugerOpen] = useState(false)
+const Course = ({ roadmap }) => {
+  const [isHambugerOpen, setIsHambugerOpen] = useState(true)
+  const { pageSlug } = useParams()
+  const [slug, setSlug] = useState(pageSlug)
+  const { data } = useSWR(GET_PAGE(slug), fetcher)
 
   return (
     <>
@@ -25,9 +32,9 @@ const Course = ({ children, roadmap }) => {
       <div className="fluid-container">
         <div className={clsx({ container: true, 'container-wide': !isHambugerOpen })}>
           <Hamburger isHambugerOpen={isHambugerOpen}>
-            <PageMenu />
+            <PageMenu setSlug={setSlug} />
           </Hamburger>
-          <Content isHambugerOpen={isHambugerOpen}>{children}</Content>
+          {data && <Content isHambugerOpen={isHambugerOpen} content={data.page.content.html} />}
           <Roadmap className="roadmap" roadmap={roadmap} />
         </div>
       </div>

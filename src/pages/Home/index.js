@@ -18,9 +18,7 @@ const Home = () => {
   return (
     <>
       <Seo title="Home" description="Description of Home" />
-      <Course hamburgerMenu={hamburgerMenu} roadmap={roadmap}>
-        ggg
-      </Course>
+      <Course hamburgerMenu={hamburgerMenu} roadmap={roadmap} />
     </>
   )
 }

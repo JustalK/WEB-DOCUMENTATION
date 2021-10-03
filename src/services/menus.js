@@ -1,10 +1,11 @@
 const GET_MENU = `
-  query MyQuery {
+  query GetMenu {
     menus {
       name
       pages {
         id
         title
+        slug
       }
     }
   }

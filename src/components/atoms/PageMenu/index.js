@@ -12,8 +12,13 @@ import GET_MENU from '@services/menus'
  * Create the component Content
  * @return {Object} Return the dom of the Content page
  */
-const PageMenu = () => {
+const PageMenu = ({ setSlug }) => {
   const { data } = useSWR(GET_MENU, fetcher)
+  const handleClick = (e, page) => {
+    e.preventDefault()
+    setSlug(page.slug)
+  }
+
   return (
     <>
       {data &&
@@ -25,7 +30,13 @@ const PageMenu = () => {
               <ul>
                 {pages &&
                   pages.map((page) => {
-                    return <li key={page.title}>{page.title}</li>
+                    return (
+                      <li key={page.title}>
+                        <a href={page.slug} onClick={(e) => handleClick(e, page)}>
+                          {page.title}
+                        </a>
+                      </li>
+                    )
                   })}
               </ul>
             </>
