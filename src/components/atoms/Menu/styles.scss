@@ -21,6 +21,30 @@ header {
     }
   }
 
+  input {
+    border: 0;
+    border-bottom: 2px solid #414141;
+    font-size: 14px;
+    outline: 0!important;
+    transition: all 90ms ease-in-out;
+    width: 165px;
+    background: transparent;
+    color: white;
+    padding: 5px 20px 5px 28px;
+
+    &:focus {
+      border-bottom-color: #ed2945;
+      width: 190px;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    color: #a5a5a5;
+    font-size: 20px;
+    margin-top: 3px;
+  }
+
   .hamburger-home {
     width: 250px;
   }
@@ -30,6 +54,32 @@ header {
 
     &-open {
       width: 250px;
+    }
+  }
+
+  .nav {
+    float: right;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 70px;
+    margin-right: 305px;
+
+    & ul, & li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 30px;
+      padding: 0;
+
+      & a {
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
+
+    & li:first-of-type {
+      margin-left: 0;
     }
   }
 }
