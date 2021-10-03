@@ -9,25 +9,27 @@ header {
 
   button {
   	background: none;
-  	color: inherit;
+  	color: white;
   	border: none;
   	padding: 0;
   	font: inherit;
   	cursor: pointer;
   	outline: inherit;
+    height: 70px;
+    &:hover {
+      background: #212121;
+    }
+  }
+
+  .hamburger-home {
+    width: 250px;
   }
 
   .hamburger-menu {
-    height: 70px;
-    color: white;
     width: 70px;
 
     &-open {
       width: 250px;
-    }
-
-    &:hover {
-      background: #212121;
     }
   }
 }

@@ -5,19 +5,25 @@
 
 import React from 'react'
 import './styles.scss'
+import MenuIcon from '@mui/icons-material/Menu'
+import MenuOpenIcon from '@mui/icons-material/MenuOpen'
+import HomeIcon from '@mui/icons-material/Home'
 import clsx from 'clsx'
 /**
  * @function Menu
  * Create the component Menu
  * @return {Object} Return the dom of the Menu page
  */
-const Menu = ({ title, isHambugerOpen, setIsHambugerOpen }) => {
+const Menu = ({ isHambugerOpen, setIsHambugerOpen }) => {
   return (
     <header>
       <button className={clsx({ 'hamburger-menu': true, 'hamburger-menu-open': isHambugerOpen })} onClick={() => setIsHambugerOpen((c) => !c)}>
-        Hamburger
+        {!isHambugerOpen && <MenuIcon fontSize="large" />}
+        {isHambugerOpen && <MenuOpenIcon fontSize="large" />}
       </button>
-      <div>{title}</div>
+      <button className="hamburger-home">
+        <HomeIcon fontSize="large" />
+      </button>
     </header>
   )
 }
