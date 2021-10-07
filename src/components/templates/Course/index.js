@@ -20,7 +20,7 @@ import './style.scss'
  * Create the component Roadmap
  * @return {Object} Return the dom of the Roadmap menu
  */
-const Course = ({ roadmap }) => {
+const Course = () => {
   const [isHambugerOpen, setIsHambugerOpen] = useState(true)
   const { pageSlug } = useParams()
   const [slug, setSlug] = useState(pageSlug)
@@ -35,7 +35,7 @@ const Course = ({ roadmap }) => {
             <PageMenu setSlug={setSlug} />
           </Hamburger>
           {data && <Content isHambugerOpen={isHambugerOpen} content={data.page.content.html} />}
-          <Roadmap className="roadmap" roadmap={roadmap} />
+          {data && <Roadmap className="roadmap" roadmap={data.page.content.html} />}
         </div>
       </div>
     </>

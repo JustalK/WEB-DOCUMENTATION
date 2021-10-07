@@ -12,10 +12,14 @@ import './style.scss'
  * @return {Object} Return the dom of the Roadmap menu
  */
 const Roadmap = ({ className, roadmap }) => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(roadmap, 'text/html')
+  const elements = doc.querySelectorAll('.anchor')
+
   return (
     <div className={className}>
-      {roadmap.map((rm) => (
-        <Anchor key={rm} link={rm} text={rm} />
+      {Array.from(elements).map((rm) => (
+        <Anchor key={rm.id} link={`#${rm.id}`} text={rm.innerText} />
       ))}
     </div>
   )
