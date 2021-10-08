@@ -13,11 +13,13 @@ import { stringToSlug } from '@src/utils/string'
  */
 const Roadmap = ({ className, roadmap }) => {
   return (
-    <div className={className}>
+    <ul className={className}>
       {roadmap.map((rm) => (
-        <Anchor key={rm.id} link={`#${stringToSlug(rm.innerText)}`} text={rm.innerText} />
+        <li key={rm.id}>
+          <Anchor link={`#${stringToSlug(rm.innerText)}`} text={rm.innerText} />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
 

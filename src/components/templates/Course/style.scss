@@ -29,12 +29,10 @@
 }
 
 .roadmap {
-  background: green;
   position: fixed;
-  top: 0;
+  top: 90px;
   right: 0;
-  height: 100vh;
+  max-height: 100vh;
   width: 220px;
-  padding: 90px 17px 40px 24px;
   box-sizing: border-box;
 }
