@@ -2,7 +2,7 @@
  * The components managing the roadmap menu
  * @module components/Roadmap
  */
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import fetcher from '@services/Api'
@@ -12,6 +12,7 @@ import Hamburger from '@components/molecules/Hamburger'
 import Roadmap from '@components/molecules/Roadmap'
 import Menu from '@components/atoms/Menu'
 import PageMenu from '@components/atoms/PageMenu'
+import { stringToSlug } from '@src/utils/string'
 import clsx from 'clsx'
 import './style.scss'
 
@@ -26,6 +27,37 @@ const Course = () => {
   const [slug, setSlug] = useState(pageSlug)
   const { data } = useSWR(GET_PAGE(slug), fetcher)
 
+  const roadmap = useMemo(() => {
+    if (!data) {
+      return []
+    }
+
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(data.page.content.html, 'text/html')
+    const elements = doc.querySelectorAll('h3')
+    return Array.from(elements)
+  }, [data])
+
+  const content = useMemo(() => {
+    if (!data) {
+      return ''
+    }
+
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(data.page.content.html, 'text/html')
+    const elements = doc.querySelectorAll('h3')
+    const h3 = Array.from(elements)
+
+    h3.forEach((item) => {
+      const newTitle = document.createElement('h3')
+      newTitle.id = stringToSlug(item.innerText)
+      newTitle.innerHTML = item.innerText
+      item.parentNode.replaceChild(newTitle, item)
+    })
+
+    return doc.body.innerHTML
+  }, [data])
+
   return (
     <>
       <Menu isHambugerOpen={isHambugerOpen} setIsHambugerOpen={setIsHambugerOpen} />
@@ -34,8 +66,8 @@ const Course = () => {
           <Hamburger isHambugerOpen={isHambugerOpen}>
             <PageMenu setSlug={setSlug} />
           </Hamburger>
-          {data && <Content isHambugerOpen={isHambugerOpen} content={data.page.content.html} />}
-          {data && <Roadmap className="roadmap" roadmap={data.page.content.html} />}
+          <Content isHambugerOpen={isHambugerOpen} content={content} />
+          <Roadmap className="roadmap" roadmap={roadmap} />
         </div>
       </div>
     </>
