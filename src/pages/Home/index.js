@@ -36,7 +36,7 @@ const Home = () => {
 
     const parser = new DOMParser()
     const doc = parser.parseFromString(data.page.content.html, 'text/html')
-    const elements = doc.querySelectorAll('h3')
+    const elements = doc.querySelectorAll('h2')
     return Array.from(elements)
   }, [data])
 
@@ -47,17 +47,25 @@ const Home = () => {
 
     const parser = new DOMParser()
     const doc = parser.parseFromString(data.page.content.html, 'text/html')
-    const elements = doc.querySelectorAll('h3')
+    const elements = doc.querySelectorAll('h2')
     const h3 = Array.from(elements)
 
     h3.forEach((item) => {
-      const newTitle = document.createElement('h3')
+      const newTitle = document.createElement('h2')
       newTitle.id = stringToSlug(item.innerText)
       newTitle.innerHTML = item.innerText
       item.parentNode.replaceChild(newTitle, item)
     })
 
     return doc.body.innerHTML
+  }, [data])
+
+  const title = useMemo(() => {
+    if (!data) {
+      return ''
+    }
+
+    return data.page.title
   }, [data])
 
   return (
@@ -69,7 +77,7 @@ const Home = () => {
           <Hamburger isHambugerOpen={isHambugerOpen}>
             <PageMenu setSlug={setSlug} />
           </Hamburger>
-          <Content isHambugerOpen={isHambugerOpen} content={content} />
+          <Content isHambugerOpen={isHambugerOpen} title={title} content={content} />
           <Roadmap className="roadmap" roadmap={roadmap} />
         </div>
       </div>

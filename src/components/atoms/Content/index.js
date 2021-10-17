@@ -10,8 +10,13 @@ import './style.scss'
  * Create the component Content
  * @return {Object} Return the dom of the Content page
  */
-const Content = ({ content }) => {
-  return <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
+const Content = ({ title, content }) => {
+  return (
+    <>
+      <h1>{title}</h1>
+      <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
+    </>
+  )
 }
 
 export default Content
