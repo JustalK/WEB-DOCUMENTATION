@@ -5,7 +5,9 @@
     font-weight: 700;
     color: #151515;
     font-size: 15px;
-    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     cursor: pointer;
   }
 

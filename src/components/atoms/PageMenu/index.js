@@ -8,6 +8,7 @@ import fetcher from '@services/Api'
 import GET_MENU from '@services/menus'
 import { useHistory } from 'react-router-dom'
 import Collapse from '@kunukn/react-collapse'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import clsx from 'clsx'
 import './styles.scss'
 
@@ -38,7 +39,7 @@ const PageMenu = ({ setSlug }) => {
           return (
             <div key={index} className="page-menu">
               <span onClick={handleOpened} className="page-menu_label" key={menu.id}>
-                {menu.name}
+                {menu.name} <KeyboardArrowUpIcon />
               </span>
               <Collapse isOpen={opened} transition="height 250ms cubic-bezier(0.4, 0, 0.2, 1)">
                 <ul className={clsx({ 'page-menu_list': true, '--opened': opened })}>
