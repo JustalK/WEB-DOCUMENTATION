@@ -19,7 +19,7 @@ import './styles.scss'
  */
 const PageMenu = ({ setSlug }) => {
   const history = useHistory()
-  const { data } = useSWR(GET_MENU, fetcher)
+  const { data } = useSWR(GET_MENU('react'), fetcher)
   const [opened, setOpened] = useState(false)
   const handleClick = (e, page) => {
     e.preventDefault()
@@ -39,14 +39,14 @@ const PageMenu = ({ setSlug }) => {
           return (
             <div key={index} className="page-menu">
               <span onClick={handleOpened} className="page-menu_label" key={menu.id}>
-                {menu.name} <KeyboardArrowUpIcon />
+                {menu.name} <KeyboardArrowUpIcon className={clsx({ 'page-menu_chevron': true, 'page-menu_chevron--activated': opened })} />
               </span>
               <Collapse isOpen={opened} transition="height 250ms cubic-bezier(0.4, 0, 0.2, 1)">
-                <ul className={clsx({ 'page-menu_list': true, '--opened': opened })}>
+                <ul className="page-menu_list">
                   {pages &&
                     pages.map((page) => {
                       return (
-                        <li key={page.title} className={clsx({ 'page-menu_list_item': true, '--show': opened })}>
+                        <li key={page.title} className="page-menu_list_item">
                           <a href={page.slug} onClick={(e) => handleClick(e, page)}>
                             {page.title}
                           </a>

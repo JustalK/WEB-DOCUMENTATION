@@ -76,7 +76,6 @@ const Home = () => {
         <div className={clsx({ container: true, 'container-wide': !isHambugerOpen })}>
           <Hamburger isHambugerOpen={isHambugerOpen}>
             <PageMenu setSlug={setSlug} />
-            <PageMenu setSlug={setSlug} />
           </Hamburger>
           <Content isHambugerOpen={isHambugerOpen} title={title} content={content} />
           <Roadmap className="roadmap" roadmap={roadmap} />

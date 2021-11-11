@@ -1,6 +1,6 @@
-const GET_MENU = `
+const GET_MENU = (category) => `
   query GetMenu {
-    menus {
+    menus(where: {category: "${category}"}) {
       name
       pages {
         id

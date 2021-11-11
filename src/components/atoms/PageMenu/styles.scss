@@ -11,6 +11,15 @@
     cursor: pointer;
   }
 
+  &_chevron {
+    transition: all 0.25s !important;
+
+    &--activated {
+      color: red;
+      transform: rotateZ(180deg);
+    }
+  }
+
   &_list {
     margin: 10px 0 15px;
     padding-left: 15px;
