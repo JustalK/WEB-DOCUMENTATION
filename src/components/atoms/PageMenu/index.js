@@ -2,14 +2,11 @@
  * The components managing the content in the middle area
  * @module components/Content
  */
-import React, { useState } from 'react'
+import React from 'react'
 import useSWR from 'swr'
 import fetcher from '@services/Api'
 import GET_MENU from '@services/menus'
-import { useHistory } from 'react-router-dom'
-import Collapse from '@kunukn/react-collapse'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import clsx from 'clsx'
+import SubMenu from '@components/atoms/SubMenu'
 import './styles.scss'
 
 /**
@@ -18,48 +15,9 @@ import './styles.scss'
  * @return {Object} Return the dom of the Content page
  */
 const PageMenu = ({ setSlug }) => {
-  const history = useHistory()
   const { data } = useSWR(GET_MENU('react'), fetcher)
-  const [opened, setOpened] = useState(false)
-  const handleClick = (e, page) => {
-    e.preventDefault()
-    history.push(page.slug)
-    setSlug(page.slug)
-  }
 
-  const handleOpened = () => {
-    setOpened((c) => !c)
-  }
-
-  return (
-    <>
-      {data &&
-        data.menus.map((menu, index) => {
-          const { pages } = menu
-          return (
-            <div key={index} className="page-menu">
-              <span onClick={handleOpened} className="page-menu_label" key={menu.id}>
-                {menu.name} <KeyboardArrowUpIcon className={clsx({ 'page-menu_chevron': true, 'page-menu_chevron--activated': opened })} />
-              </span>
-              <Collapse isOpen={opened} transition="height 250ms cubic-bezier(0.4, 0, 0.2, 1)">
-                <ul className="page-menu_list">
-                  {pages &&
-                    pages.map((page) => {
-                      return (
-                        <li key={page.title} className="page-menu_list_item">
-                          <a href={page.slug} onClick={(e) => handleClick(e, page)}>
-                            {page.title}
-                          </a>
-                        </li>
-                      )
-                    })}
-                </ul>
-              </Collapse>
-            </div>
-          )
-        })}
-    </>
-  )
+  return <>{data && data.menus.map((menu, index) => <SubMenu key={index} menu={menu} setSlug={setSlug}></SubMenu>)}</>
 }
 
 export default PageMenu

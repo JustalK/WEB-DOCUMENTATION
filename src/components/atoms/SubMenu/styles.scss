@@ -1,0 +1,32 @@
+
+.page-menu {
+  &_label {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #151515;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &_chevron {
+    transition: all 0.25s !important;
+
+    &--activated {
+      color: red;
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &_list {
+    margin: 10px 0 15px;
+    padding-left: 15px;
+
+    &_item {
+      display: block;
+      padding: 2.5px 0;
+    }
+  }
+}
