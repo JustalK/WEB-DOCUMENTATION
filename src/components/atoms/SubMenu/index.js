@@ -29,27 +29,41 @@ const PageMenu = ({ setSlug, menu }) => {
   }
 
   const { pages } = menu
+  const { location } = history
 
   return (
-    <div className="page-menu">
-      <span onClick={handleOpened} className="page-menu_label" key={menu.id}>
-        {menu.name} <KeyboardArrowUpIcon className={clsx({ 'page-menu_chevron': true, 'page-menu_chevron--activated': opened })} />
-      </span>
-      <Collapse isOpen={opened} transition="height 250ms cubic-bezier(0.4, 0, 0.2, 1)">
-        <ul className="page-menu_list">
-          {pages &&
-            pages.map((page) => {
-              return (
-                <li key={page.title} className="page-menu_list_item">
-                  <a href={page.slug} onClick={(e) => handleClick(e, page)}>
-                    {page.title}
-                  </a>
-                </li>
-              )
-            })}
-        </ul>
-      </Collapse>
-    </div>
+    <>
+      {pages.length >= 2 && (
+        <div className="page-menu">
+          <span onClick={handleOpened} className="page-menu_label" key={menu.id}>
+            {menu.name} <KeyboardArrowUpIcon className={clsx({ 'page-menu_chevron': true, 'page-menu_chevron--activated': opened })} />
+          </span>
+          <Collapse isOpen={opened} transition="height 250ms cubic-bezier(0.4, 0, 0.2, 1)">
+            <ul className="page-menu_list">
+              {pages &&
+                pages.map((page) => {
+                  return (
+                    <li key={page.title} className="page-menu_list_item">
+                      <a href={page.slug} className={clsx({ 'page-menu_list_item--activated': location.pathname === `/doc/${page.slug}` })} onClick={(e) => handleClick(e, page)}>
+                        {page.title}
+                      </a>
+                    </li>
+                  )
+                })}
+            </ul>
+          </Collapse>
+        </div>
+      )}
+      {pages.length === 1 && (
+        <div className="page-menu">
+          <a href={pages[0].slug} className={clsx({ 'page-menu_label': true, 'page-menu--activated': location.pathname === `/doc/${pages[0].slug}` })} onClick={(e) => handleClick(e, pages[0])}>
+            <span onClick={handleOpened} className={clsx({ 'page-menu_label': true, 'page-menu_label--activated': location.pathname === `/doc/${pages[0].slug}` })} key={menu.id}>
+              {menu.name}
+            </span>
+          </a>
+        </div>
+      )}
+    </>
   )
 }
 

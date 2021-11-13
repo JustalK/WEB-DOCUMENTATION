@@ -9,6 +9,10 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+
+    &--activated {
+      color: red;
+    }
   }
 
   &_chevron {
@@ -27,6 +31,10 @@
     &_item {
       display: block;
       padding: 2.5px 0;
+
+      &--activated {
+        color: red;
+      }
     }
   }
 }
