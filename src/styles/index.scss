@@ -1,6 +1,20 @@
 @font-face {
+  font-family: 'Source Black';
+  src: local('Source Black'), url(../fonts/SourceSansPro-Black.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+  'embedded-opentype', and 'svg' */
+}
+
+@font-face {
   font-family: 'Source Bold';
   src: local('Source Bold'), url(../fonts/SourceSansPro-Bold.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+  'embedded-opentype', and 'svg' */
+}
+
+@font-face {
+  font-family: 'Source Semi-Bold';
+  src: local('Source Semi-Bold'), url(../fonts/SourceSansPro-SemiBold.ttf) format('truetype');
   /* other formats include: 'woff2', 'truetype, 'opentype',
   'embedded-opentype', and 'svg' */
 }
@@ -45,7 +59,15 @@ span {
 
 h3, h2 {
   font-size: 24px;
+  font-family: 'Source Semi-Bold';
+  margin: 20px 0;
+}
+
+h1 {
+  font-size: 24px;
   font-family: 'Source Bold';
+  font-weight: 700;
+  margin: 20px 0;
 }
 
 p {
